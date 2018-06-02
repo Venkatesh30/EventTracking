@@ -1,14 +1,23 @@
 // app/routes.js
-
+let notificationRoutes = require("./routes/notification_route");
 let groups = require("./modules/groups");
 
 module.exports = function(app, passport) {
-
+    notificationRoutes(app,passport);
+    
     // route for home page
     app.get('/', function(req, res) {
-        res.render('index.ejs'); // load the index.ejs file
+        if(req.isAuthenticated()){
+            res.render('index.ejs');
+        }
+        else{
+            res.redirect("/login");
+        }
+         // load the index.ejs file
     });
-
+    app.get('/login',function(req,res){
+        res.render('login.ejs');
+    })
     // route for login form
     // route for processing the login form
     // route for signup form
@@ -32,7 +41,7 @@ module.exports = function(app, passport) {
     // handle the callback after facebook has authenticated the user
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect : '/profile',
+            successRedirect : '/',
             failureRedirect : '/'
         }));
 
@@ -47,7 +56,7 @@ module.exports = function(app, passport) {
     // the callback after google has authenticated the user
     app.get('/auth/google/callback',
         passport.authenticate('google', {
-                successRedirect : '/profile',
+                successRedirect : '/',
                 failureRedirect : '/'
         })
     );

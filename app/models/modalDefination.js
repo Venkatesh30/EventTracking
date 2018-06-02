@@ -9,7 +9,7 @@ var sequelize = new Sequelize(dbConfig.database, dbConfig.user, dbConfig.passwor
     }
 });
 var DataTypes = Sequelize.DataTypes;
-
+let Events = require("./EVENTS");
 let users = require("./USERS");
 let groups = require("./GROUPS");
 let groupAssociation = require("./GROUP_ASSOCIATION");
@@ -17,5 +17,6 @@ let groupAssociation = require("./GROUP_ASSOCIATION");
 module.exports = {
     USERS:users(sequelize,DataTypes),
     GROUPS:groups(sequelize,DataTypes),
-    GROUP_ASSOCIATION:groupAssociation(sequelize,DataTypes)
+    GROUP_ASSOCIATION:groupAssociation(sequelize,DataTypes),
+    Events:Events(sequelize,DataTypes),
 }
