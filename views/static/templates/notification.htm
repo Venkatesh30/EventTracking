@@ -1,0 +1,31 @@
+
+<div class="notification-form" ng-controller="SendNotification">
+    <i class="fa fa-spinner initial-loader fa-spin" ng-show="pageData.showLoader"></i>
+    <div class="event-list" ng-show="pageData.showNotificationForm == false && pageData.showLoader == false">
+        <ul class="list-group">
+            <li class="list-group-item clearfix" ng-repeat="event in events">
+                <div class="col-md-4">
+                    {{event.title}}
+                </div>
+                <div class="col-md-4">
+                    {{event.description}}
+                </div>
+                <div class="col-md-4">
+                    {{event.scheduledTime | date:'yyyy-MM-dd HH:mm'}}
+                </div>
+            </li>
+        </ul>
+        <div class="btn btn-lg btn-primary" style="display:block" ng-click="pageData.showNotificationForm=true">Create Event</div>
+    </div>
+    <div class="" ng-show="pageData.showNotificationForm">
+        <input type="text" placeholder="title" class="form-control" ng-model="notification.title" />
+        <textarea placeholder="desciption" class="form-control" ng-model="notification.description">
+
+        </textarea>
+        <input  class="form-control" type="date" ng-model="notification.date" />
+        <input  class="form-control" type="time" ng-model="notification.time">
+        <div class="btn btn-primary" ng-click="submit()">
+            Schedule
+        </div>
+    </div>
+</div>

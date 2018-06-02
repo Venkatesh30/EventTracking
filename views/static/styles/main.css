@@ -1,0 +1,17 @@
+body{
+    background: linear-gradient(45deg, #0077b5,#008891);
+    background-attachment: fixed;
+    background-color: #0077b5;
+}
+.container{
+    background: #EEE;
+    max-width: 1024px;
+    margin: auto;
+    padding: 10px;
+    border-radius: 6px;
+}
+.initial-loader{
+    font-size: 120px;
+    text-align: center;
+    display: block;
+}
